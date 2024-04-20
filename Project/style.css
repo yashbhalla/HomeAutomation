@@ -1,0 +1,81 @@
+/* Reset default margin and padding */
+body, button, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Tab button styles */
+.tab {
+    display: none;
+    padding: 20px;
+}
+
+/* Active tab styles */
+.active {
+    display: block;
+}
+
+/* Tab button styles */
+.tablinks {
+    background-color: #f0f0f0;
+    border: none;
+    color: #333;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background-color 0.3s ease;
+}
+
+.tablinks:hover {
+    background-color: #ddd;
+}
+
+/* Tab content styles */
+.tabcontent {
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Style for each thing */
+.thing {
+    margin-bottom: 10px;
+}
+
+/* Style for relationships table */
+.relationships-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.relationships-table th,
+.relationships-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.relationships-table th {
+    background-color: #f0f0f0;
+}
+
+/* Style for App editor */
+#appEditor {
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-family: monospace;
+}
