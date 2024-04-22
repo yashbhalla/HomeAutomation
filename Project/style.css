@@ -140,6 +140,7 @@ h1 {
 
 /* Style for app buttons */
 .app-btn {
+    display:inline;
     background-color: #3498db;
     border: none;
     color: #fff;

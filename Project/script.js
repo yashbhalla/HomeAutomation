@@ -80,7 +80,7 @@ function startNewApp() {
 // Function to switch to the Apps tab and prompt for uploading existing app
 function uploadExistingApp() {
     openTab(event, 'apps');
-    var existingApp = prompt("Please paste your existing app code here:");
+    var existingApp = prompt("Please paste your existing app path here:");
     if (existingApp != null) {
         document.getElementById("appEditor").value = existingApp;
     }
