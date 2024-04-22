@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Apps</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="things.html" onclick="openTab(event, 'things')" class="active">Things</a></li>
+                    <li><a href="services.html" onclick="openTab(event, 'services')" class="active">Services</a></li>
+                    <li><a href="relationships.html" onclick="openTab(event, 'relationships')" class="active">Relationships</a></li>
+                    <li><a href="apps.html" onclick="openTab(event, 'apps')" class="active">Apps</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>Apps Page</h1>
+
+        <div id="apps" class="tab active">
+            <h3>Apps:</h3>
+            <div>
+                <button class="app-btn" onclick="startNewApp()">Start New App</button>
+                <button class="app-btn" onclick="uploadExistingApp()">Upload Existing App</button>
+                <button class="app-btn" onclick="activateApp()">Activate App</button>
+                <button class="app-btn" onclick="stopApp()">Stop App</button>
+                <button class="app-btn" onclick="deleteApp()">Delete App</button>
+            </div>
+            <textarea id="appEditor" placeholder="Write your IoT App here..."></textarea>
+            <div>
+                <!--<button onclick="saveApp()">Save App</button>-->
+                <button class="app-btn" onclick="clearEditor()">Clear</button>
+                <button class="app-btn" onclick="saveApp()">Save App</button>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>

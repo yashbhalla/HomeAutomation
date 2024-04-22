@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Things</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <nav class="navbar">
+            <div class="container">
+                <ul>
+                    <li><a href="things.html" onclick="openTab(event, 'things')" class="active">Things</a></li>
+                    <li><a href="services.html" onclick="openTab(event, 'services')" class="active">Services</a></li>
+                    <li><a href="relationships.html" onclick="openTab(event, 'relationships')" class="active">Relationships</a></li>
+                    <li><a href="apps.html" onclick="openTab(event, 'apps')" class="active">Apps</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <h1>Things Page</h1>
+
+        <div id="things" class="tab active">
+            <h3>List of Things:</h3>
+            <div class="thing">
+                <div id="thingsList"></div>
+            </div>
+        </div>
+
+        <script>
+            var thingsData = [
+                { id: 1, name: "Thing 1", description: "Description for Thing 1", services: ["Service A", "Service B", "Service C"] },
+                { id: 2, name: "Thing 2", description: "Description for Thing 2", services: ["Service X", "Service Y", "Service Z"] },
+                { id: 3, name: "Thing 3", description: "Description for Thing 3", services: ["Service M", "Service N", "Service O"] }
+            ];
+
+            // Simulated data for relationships
+            var relationshipsData = [
+                { serviceA: "Service A", serviceB: "Service B", type: "Order-based" },
+                { serviceA: "Service C", serviceB: "Service Z", type: "Condition-based" },
+                // Add more relationships as needed
+            ];
+
+            function populateThingsTab() {
+                var thingsList = document.getElementById("thingsList");
+                thingsList.innerHTML = ""; // Clear previous content
+
+                // Loop through things data and create HTML elements
+                for (var i = 0; i < thingsData.length; i++) {
+                    var thing = thingsData[i];
+                    var thingDiv = document.createElement("div");
+                    thingDiv.classList.add("thing");
+                    thingDiv.innerHTML = "<strong>Name:</strong> " + thing.name + "<br><strong>Description:</strong> " + thing.description;
+                    thingsList.appendChild(thingDiv);
+                }
+            }
+            populateThingsTab();
+        </script>
+    </body>
+</html>

@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+    
 <div class="container">
 
     <!-- Tab buttons -->
@@ -19,7 +19,9 @@
     <!-- Tab content -->
     <div id="things" class="tab active">
         <h3>List of Things:</h3>
-        <div id="thingsList"></div>
+        <div class="thing">
+            <div id="thingsList"></div>
+        </div>
     </div>
 
     <div id="services" class="tab">
@@ -44,17 +46,17 @@
     <div id="apps" class="tab">
         <h3>Apps:</h3>
         <div>
-            <button onclick="startNewApp()">Start New App</button>
-            <button onclick="uploadExistingApp()">Upload Existing App</button>
-            <button onclick="activateApp()">Activate App</button>
-            <button onclick="stopApp()">Stop App</button>
-            <button onclick="deleteApp()">Delete App</button>
+            <button class="app-btn" onclick="startNewApp()">Start New App</button>
+            <button class="app-btn" onclick="uploadExistingApp()">Upload Existing App</button>
+            <button class="app-btn" onclick="activateApp()">Activate App</button>
+            <button class="app-btn" onclick="stopApp()">Stop App</button>
+            <button class="app-btn" onclick="deleteApp()">Delete App</button>
         </div>
         <textarea id="appEditor" placeholder="Write your IoT App here..."></textarea>
         <div>
-            <button onclick="saveApp()">Save App</button>
-            <button onclick="clearEditor()">Clear</button>
-            <button onclick="finalizeApp()">Finalize</button>
+            <!--<button onclick="saveApp()">Save App</button>-->
+            <button class="app-btn" onclick="clearEditor()">Clear</button>
+            <button class="app-btn" onclick="saveApp()">Save App</button>
         </div>
     </div>
 

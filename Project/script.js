@@ -86,19 +86,13 @@ function uploadExistingApp() {
     }
 }
 
-// Function to save the app locally
-function saveApp() {
-    // You can implement saving functionality here
-    alert("App saved successfully!");
-}
-
 // Function to clear the editor
 function clearEditor() {
     document.getElementById("appEditor").value = "";
 }
 
 // Function to finalize the app
-function finalizeApp() {
+function saveApp() {
     var appName = prompt("Please enter a name for your app:");
     if (appName != null && appName.trim() !== "") {
         // You can implement finalizing functionality here
@@ -140,7 +134,7 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 
-    // If the Things tab is clicked, populate it with data
+    // Call the appropriate function based on the tabName
     if (tabName === "things") {
         populateThingsTab();
     } else if (tabName === "services") {
@@ -150,5 +144,5 @@ function openTab(evt, tabName) {
     }
 }
 
+
 // Initially populate the Things tab with data
-populateThingsTab();
