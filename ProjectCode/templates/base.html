@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <title>My Flask App</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <ul>
+                <li><a href="{{ url_for('get_iot_things') }}" onclick="openTab(event, 'things')" class="active">Things</a></li>
+                <li><a href="{{ url_for('get_services') }}" onclick="openTab(event, 'services')" class="active">Services</a></li>
+                <li><a href="{{ url_for('relations') }}" onclick="openTab(event, 'relationships')" class="active">Relationships</a></li>
+                <li><a href="{{ url_for('list_apps') }}" onclick="openTab(event, 'apps')" class="active">Apps</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

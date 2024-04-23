@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Things</h1>
+    {% for thing, details in things.items() %}
+    <div class ="thing"> 
+        <strong>Thing ID:</strong> {{ thing }}
+        <br>
+        <strong>Description:</strong> {{ details }}
+    </div>
+       
+    {% endfor %}
+{% endblock %}
+
+</body>
+</html>

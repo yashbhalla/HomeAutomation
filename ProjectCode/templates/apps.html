@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apps Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        // function startNewApp() {
+        //     fetch('/start_new_app', { method: 'POST' })
+        //         .then(response => response.text())
+        //         .then(data => console.log(data));
+        // }
+
+        function openFileSelector() {
+            var fileInput = document.getElementById('appFile');
+            fileInput.click();
+
+            fileInput.onchange = function() {
+                uploadExistingApp();
+            }
+        }
+
+        function uploadExistingApp() {
+            var fileInput = document.getElementById('appFile');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('appFile', file);
+
+            fetch('/upload_existing_app', { 
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Set the content of the text editor to the returned data
+                document.getElementById('appEditor').value = data.appData;
+                document.getElementById('fileName').value = file.name;
+            });
+        }
+
+        function activateApp(button) {
+            var filePath = button.getAttribute('data-filename');
+            fetch('/activate/app', { method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fileName: filePath,
+                })
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
+        }
+
+        function stopApp(button) {
+            var filePath = button.getAttribute('data-filename');
+            fetch('/stop/app', { method: 'POST',
+            headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fileName: filePath,
+                })
+            })
+        }
+
+        
+
+        function deleteApp(button) {
+            var filePath = button.getAttribute('data-filename');
+            fetch('/delete/app', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    filePath: filePath,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => console.log(data));
+        }
+
+        function clearEditor() {
+            document.getElementById('appEditor').value = '';
+        }
+
+        function saveApp() {
+            let appData = document.getElementById('appEditor').value;
+            
+            let fileName = document.getElementById('fileName').value;
+            if (!fileName) {
+                alert('Please enter a file name.');
+                return;
+            }
+            fetch('/save/app', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ appData: appData, fileName: fileName}),
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
+        }
+    </script>
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    <h1>Apps Page</h1>
+    <div id="apps" class="tab active">
+        <div>
+            <input type="file" id="appFile" name="appFile" style="display: none;">
+            <button class="app-btn" onclick="openFileSelector()">Upload Existing App</button>
+            
+        </div>
+        <br>
+        <textarea id="appEditor" placeholder="Write your IoT App here..." name="appdata"></textarea>
+        <div>
+            <button class="app-btn" onclick="clearEditor()">Clear</button>
+        </div>
+        <br>
+        <input type="text" id="fileName" placeholder="Enter file name here">
+        <br><br>
+        <div><button class="app-btn" onclick="saveApp()">Save App</button>
+        </div>
+    </div>
+    {% for app in apps %}
+        <div class ="thing"> 
+            {{ app }}
+            <div style="float: right;">
+                <button class="app-btn" data-filename="{{ app }}" onclick="activateApp(this)">Activate App</button>
+                <button class="app-btn" data-filename="{{ app }}" onclick="stopApp(this)">Stop App</button>
+                <button class="app-btn" data-filename="{{ app }}" onclick="deleteApp(this)">Delete App</button>
+                <br>
+            </div>
+        </div>
+        
+    {% endfor %}
+    {% endblock %}
+</body>
+</html>

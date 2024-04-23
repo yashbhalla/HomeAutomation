@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% extends "base.html" %}
+    {% block content %}
+    
+        <div id="relationships" class="tab active">
+            <h3>List of Relationships:</h3>
+            <table class="relationships-table">
+                <thead>
+                    <tr>
+                        <th>Relation Name</th>
+                        <th>Service A</th>
+                        <th>Service B</th>
+                        <th>Relationships</th>
+                        <th>Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for relationship in relationships %}
+                        <tr>
+                            <td>{{ relationship["relation name"] }}</td>
+                            <td>{{ relationship["service1"] }}</td>
+                            <td>{{ relationship["service2"] }}</td>
+                            <td>{{ relationship["condition_type"] }}</td>
+                            <td>{{ relationship["relationship"] }}</td>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    
+    {% endblock %}
+</body>
+</html>
